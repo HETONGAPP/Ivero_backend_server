@@ -97,6 +97,6 @@ int IMAGE_HEIGHT = std::stoi(getValueFromFile("IMAGE_HEIGHT", 2));
 
 std::string RGB_PROCESS = getValueFromFile("RGB_PROCESS", 2);
 
-std::string PCL_PROCESS = getValueFromFile("PCL_PROCESS ", 2);
+std::string PCL_PROCESS = getValueFromFile("PCL_PROCESS", 2);
 
 } // namespace ivero_backend_server
