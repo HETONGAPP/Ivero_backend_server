@@ -119,7 +119,7 @@ void VideoCapturerImpl::imageCallback(zmq::socket_t &subscriber) {
     return;
   }
   if (IsProcessRunning(RGB_PROCESS)) {
-    IVERO_SERVER_PRINT_DATACHANNEL("Publishing the RGB image ...");
+    IVERO_SERVER_PRINT_RGB("Publishing the RGB image ...");
 
     capturer_->imageCallback(subscriber);
   } else {

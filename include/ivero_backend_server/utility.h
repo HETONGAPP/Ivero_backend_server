@@ -68,6 +68,9 @@ const std::string RESET_CYAN = "\033[36m";
 #define IVERO_SERVER_PRINT_DATACHANNEL(message)                                \
   std::cout << RESET_CYAN << "[IVERO_SERVER_PCL] " << message << RESET_COLOR   \
             << std::endl;
+#define IVERO_SERVER_PRINT_RGB(message)                                        \
+  std::cout << RESET_CYAN << "[IVERO_SERVER_RGB] " << message << RESET_COLOR   \
+            << std::endl;
 
 void RUN();
 void printPattern(const std::string &pattern);
