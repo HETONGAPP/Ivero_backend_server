@@ -80,7 +80,7 @@ window.WebrtcRos = (function () {
       maxPacketLifeTime: 0
     }
     this.sendChannel = this.peerConnection.createDataChannel(
-      'data_channel_2',
+      'data channel (remote peer)',
       dataChannelOptions
     )
     this.sendChannel.bufferedAmountLowThreshold = 1024 * 1024 * 16 // 1 MB
@@ -181,10 +181,10 @@ window.WebrtcRos = (function () {
       // 	console.log("*** receive: ",event.data);
       // };
       this.receiveChannel.onopen = function (event) {
-        console.log('*** Channel Receive Funcion Has Opened ***')
+        console.log('*** Data Channel has been established ***')
       }
       this.receiveChannel.onclose = function (event) {
-        console.log('*** Channel Received Funcion Closed ***')
+        console.log('*** Data Channel has been closed ***')
       }
       this.receiveChannel.onerror = function (err) {
         console.log(err)
