@@ -26,6 +26,15 @@ sudo make -j4 install
 
 cd
 
+git clone https://github.com/HETONGAPP/async_web_server_cpp.git
+cd async_web_server_cpp
+mkdir build
+cd build
+cmake ..
+sudo make -j4 install
+
+cd
+
 current_path="$(dirname "$(readlink -f "$0")")"
 project_name=Ivero_backend_server
 
