@@ -44,14 +44,7 @@ echo -e "\033[36m*               This may take a while...                *\033[0
 echo -e "\033[36m*                                                       *\033[0m"
 echo -e "\033[36m*********************************************************\033[0m"
 
-cd /tong/
 
-git clone https://github.com/HETONGAPP/async_web_server_cpp.git
-cd async_web_server_cpp
-mkdir build
-cd build
-cmake ..
-sudo make -j install
 
 cd /tong/$project_name/scripts
 ./build.sh
