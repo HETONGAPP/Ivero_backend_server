@@ -31,7 +31,7 @@ cd async_web_server_cpp
 mkdir build
 cd build
 cmake ..
-sudo make -j4 install
+sudo make -j install
 
 cd
 
