@@ -1,9 +1,7 @@
 #ifndef __WEBRTC_CLIENT_H__
 #define __WEBRTC_CLIENT_H__
 
-#include <webrtc/api/audio_codecs/builtin_audio_decoder_factory.h>
-#include <webrtc/api/audio_codecs/builtin_audio_encoder_factory.h>
-#include <webrtc/api/audio_options.h>
+
 #include <webrtc/api/create_peerconnection_factory.h>
 #include <webrtc/api/media_stream_interface.h>
 #include <webrtc/api/peer_connection_interface.h>

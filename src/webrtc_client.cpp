@@ -89,8 +89,7 @@ WebrtcClient::WebrtcClient(SignalingChannel *signaling_channel)
 
   peer_connection_factory_ = webrtc::CreatePeerConnectionFactory(
       worker_thread_.get(), worker_thread_.get(), worker_thread_.get(), nullptr,
-      webrtc::CreateBuiltinAudioEncoderFactory(),
-      webrtc::CreateBuiltinAudioDecoderFactory(),
+      nullptr, nullptr,
       std::unique_ptr<webrtc::VideoEncoderFactory>(
           new webrtc::MultiplexEncoderFactory(
               std::make_unique<webrtc::InternalEncoderFactory>())),
@@ -300,41 +299,6 @@ void WebrtcClient::handle_message(MessageHandler::Type type,
           } else {
             IVERO_SERVER_PRINT_WARNING(
                 "Unknown video source type: " << video_type);
-          }
-
-        } else if (action.type == ConfigureAction::kAddAudioTrackActionName) {
-          FIND_PROPERTY_OR_CONTINUE("stream_id", stream_id);
-          FIND_PROPERTY_OR_CONTINUE("id", track_id);
-          FIND_PROPERTY_OR_CONTINUE("src", src);
-
-          std::string audio_type;
-          std::string audio_path;
-          if (!parseUri(src, &audio_type, &audio_path)) {
-            IVERO_SERVER_PRINT_ERROR("Invalid URI: " << src);
-            continue;
-          }
-
-          webrtc::MediaStreamInterface *stream =
-              peer_connection_->local_streams()->find(stream_id);
-
-          // std::shared_ptr<webrtc::MediaStreamInterface> stream =
-          //     std::make_shared<webrtc::MediaStreamInterface>(
-          //         peer_connection_->local_streams()->find(stream_id));
-          if (!stream) {
-            IVERO_SERVER_PRINT_ERROR("Stream not found with id: " << stream_id);
-            continue;
-          }
-
-          if (audio_type == "local") {
-            cricket::AudioOptions options;
-            rtc::scoped_refptr<webrtc::AudioTrackInterface> audio_track(
-                peer_connection_factory_->CreateAudioTrack(
-                    track_id,
-                    peer_connection_factory_->CreateAudioSource(options)));
-            stream->AddTrack(audio_track);
-          } else {
-            IVERO_SERVER_PRINT_INFO(
-                "Unknown video source type: " << audio_type);
           }
 
         } else if (action.type == ConfigureAction::kExpectStreamActionName) {
