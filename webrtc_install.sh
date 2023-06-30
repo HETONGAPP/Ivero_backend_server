@@ -9,7 +9,7 @@ echo "*********************************************************"
 cd
 # update apt get
 yes | sudo apt-get update -y 
-yes | sudo apt-get upgrade 
+sudo apt-get upgrade 
 yes | sudo apt-get dist-upgrade -yq
 
 echo "*********************************************************"
